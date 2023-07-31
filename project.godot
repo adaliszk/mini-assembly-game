@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Log="*res://addons/tinylogger/Logger.gd"
 AppState="*res://globals/AppState.gd"
 GameSettings="*res://globals/GameSettings.gd"
 GameState="*res://globals/GameState.gd"
