@@ -27,6 +27,9 @@ jobs:
           lfs: true
       - name: Export to Web
         uses: firebelley/godot-export@v5.2.1
+        with:
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.1/Godot_v4.1-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.1/Godot_v4.1-stable_export_templates.tpz
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
