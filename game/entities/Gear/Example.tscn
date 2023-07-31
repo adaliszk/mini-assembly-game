@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://pfmmrvwcgx1s"]
+
+[ext_resource type="PackedScene" uid="uid://jhftfbxccx41" path="res://game/entities/Gear/Gear.tscn" id="1_x0tq1"]
+[ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="2_3oraf"]
+[ext_resource type="Texture2D" uid="uid://b47as1x6nnlfe" path="res://ui/assets/cog.svg" id="2_d4ar8"]
+[ext_resource type="Script" path="res://game/entities/Gear/scripts/SpawnGear.gd" id="3_rox7y"]
+
+[sub_resource type="TileSet" id="TileSet_q3du0"]
+
+[node name="gear_direction" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_q3du0")
+format = 2
+
+[node name="Gear1" parent="TileMap" instance=ExtResource("1_x0tq1")]
+position = Vector2(120, 360)
+freeze = true
+locked = true
+powered = true
+torque = 1.0
+speed = 0.5
+direction = 1
+
+[node name="Gear2" parent="TileMap" instance=ExtResource("1_x0tq1")]
+position = Vector2(1160, 360)
+freeze = true
+locked = true
+
+[node name="Actions" type="CanvasLayer" parent="."]
+
+[node name="Container" type="MarginContainer" parent="Actions"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+metadata/_edit_use_anchors_ = true
+
+[node name="Actions" type="HBoxContainer" parent="Actions/Container"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Actions/Container/Actions"]
+layout_mode = 2
+theme_override_constants/margin_right = 32
+
+[node name="SpawnGear" type="Button" parent="Actions/Container/Actions/MarginContainer" node_paths=PackedStringArray("spawn_location", "spawn_container")]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_fonts/font = ExtResource("2_3oraf")
+theme_override_font_sizes/font_size = 32
+action_mode = 0
+icon = ExtResource("2_d4ar8")
+flat = true
+script = ExtResource("3_rox7y")
+spawn_location = NodePath(".")
+spawn_container = NodePath("../../../../../TileMap")
+
+[node name="Layout" type="MarginContainer" parent="Actions/Container/Actions/MarginContainer/SpawnGear"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_right = 80.0
+offset_bottom = 21.0
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = -2
+
+[node name="Label" type="Label" parent="Actions/Container/Actions/MarginContainer/SpawnGear/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3oraf")
+theme_override_font_sizes/font_size = 32
+text = "10"

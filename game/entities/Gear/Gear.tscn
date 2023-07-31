@@ -1,0 +1,176 @@
+[gd_scene load_steps=11 format=3 uid="uid://jhftfbxccx41"]
+
+[ext_resource type="Script" path="res://game/entities/Gear/scripts/GearController.gd" id="1_8hny6"]
+[ext_resource type="Script" path="res://game/scripts/TilemapGizmo.gd" id="1_fmmy3"]
+[ext_resource type="Script" path="res://game/entities/Gear/scripts/GearRenderer.gd" id="2_6hxl1"]
+[ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="3_8qyit"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u070"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gk2l3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47uqb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ve2rt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dhfi7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6vl6"]
+
+[node name="Gear1" type="RigidBody2D"]
+mass = 10000.0
+gravity_scale = 0.0
+continuous_cd = 2
+max_contacts_reported = 8
+contact_monitor = true
+can_sleep = false
+lock_rotation = true
+linear_damp_mode = 1
+linear_damp = 30.0
+script = ExtResource("1_8hny6")
+torque = 0.0
+speed = 0.0
+tooth_count = 19
+
+[node name="TilemapGizmo" type="Container" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fmmy3")
+
+[node name="Texture" type="Node2D" parent="."]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("2_6hxl1")
+
+[node name="DebugInfo" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 88
+
+[node name="Widget" type="PanelContainer" parent="DebugInfo"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u070")
+
+[node name="Container" type="MarginContainer" parent="DebugInfo/Widget"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Data" type="GridContainer" parent="DebugInfo/Widget/Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="name" type="Label" parent="DebugInfo/Widget/Container/Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8qyit")
+theme_override_font_sizes/font_size = 14
+text = "name=Gear1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="connected" type="Label" parent="DebugInfo/Widget/Container/Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8qyit")
+theme_override_font_sizes/font_size = 14
+text = "connected=<null>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="locked" type="Label" parent="DebugInfo/Widget/Container/Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8qyit")
+theme_override_font_sizes/font_size = 14
+text = "locked=false"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="freeze" type="Label" parent="DebugInfo/Widget/Container/Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8qyit")
+theme_override_font_sizes/font_size = 14
+text = "freeze=false"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="powered" type="Label" parent="DebugInfo/Widget/Container/Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8qyit")
+theme_override_font_sizes/font_size = 14
+text = "powered=false"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="torque" type="Label" parent="DebugInfo/Widget/Container/Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8qyit")
+theme_override_font_sizes/font_size = 14
+text = "torque=0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="speed" type="Label" parent="DebugInfo/Widget/Container/Data"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8qyit")
+theme_override_font_sizes/font_size = 14
+text = "speed=0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Handler" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gk2l3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_47uqb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ve2rt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dhfi7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e6vl6")
+action_mode = 0
+flat = true
