@@ -1,0 +1,96 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="ChronoGear Assembly"
+run/main_scene="res://game/Main.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+run/low_processor_mode=true
+boot_splash/bg_color=Color(1, 1, 1, 1)
+config/icon="res://icon.svg"
+
+[autoload]
+
+Log="*res://addons/tinylogger/Logger.gd"
+AppState="*res://globals/AppState.gd"
+GameSettings="*res://globals/GameSettings.gd"
+GameState="*res://globals/GameState.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[editor]
+
+movie_writer/movie_file="C:/Users/adaliszk/Projects/godot-jamegam30/renders/editor.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/jamcountdown/plugin.cfg", "res://addons/tinylogger/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://ui/assets/Raleway-Light.ttf"
+
+[input]
+
+scale_up={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+scale_down={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+drop_item={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+drag_item={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+cancel_item={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Gear1"
+2d_physics/layer_2="Gear2"
+2d_physics/layer_3="Gear3"
+2d_physics/layer_4="Gear4"
+2d_physics/layer_5="Gear1"
+2d_physics/layer_6="Gear1"
+
+[physics]
+
+2d/run_on_separate_thread=true
+3d/run_on_separate_thread=true
+common/physics_ticks_per_second=30
+
+[rendering]
+
+driver/threads/thread_model=2
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/msaa_3d=1
+viewport/transparent_background=true
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
+anti_aliasing/quality/use_debanding=true
+environment/defaults/default_environment="res://game/Environment.tres"

@@ -1,0 +1,11 @@
+.idea
+.vscode
+.import
+.godot
+
+**/*.tmp
+
+addons
+builds
+
+git_version.txt
