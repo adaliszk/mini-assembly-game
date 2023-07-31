@@ -37,6 +37,11 @@ script = ExtResource("1_8hny6")
 torque = 0.0
 speed = 0.0
 tooth_count = 19
+color = Color(0.298039, 0.635294, 0.803922, 1)
+
+[node name="ScoreTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = inf
 
 [node name="TilemapGizmo" type="Container" parent="."]
 anchors_preset = 8
@@ -57,6 +62,7 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("2_6hxl1")
 
 [node name="DebugInfo" type="MarginContainer" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

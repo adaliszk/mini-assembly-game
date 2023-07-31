@@ -4,18 +4,18 @@
 [ext_resource type="Script" path="res://ui/scripts/ExitAction.gd" id="1_ok7ew"]
 [ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="1_rdfrc"]
 [ext_resource type="Script" path="res://ui/scripts/data/PrintGameName.gd" id="2_ncfv3"]
-[ext_resource type="Texture2D" uid="uid://dpwtcjeyi8w8q" path="res://ui/assets/play.svg" id="2_vjocl"]
 [ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="4_ewxdl"]
-[ext_resource type="Texture2D" uid="uid://b5cxkgufwto12" path="res://ui/assets/close.svg" id="5_6vefq"]
+[ext_resource type="Texture2D" uid="uid://dpwtcjeyi8w8q" path="res://ui/assets/icons/play.svg" id="5_66jgi"]
 [ext_resource type="Script" path="res://ui/scripts/LevelLoader.gd" id="6_cmkkl"]
+[ext_resource type="Texture2D" uid="uid://b5cxkgufwto12" path="res://ui/assets/icons/close.svg" id="7_w5r6b"]
 
-[sub_resource type="Gradient" id="Gradient_cpmfb"]
+[sub_resource type="Gradient" id="Gradient_thsp2"]
 interpolation_mode = 2
 interpolation_color_space = 2
 colors = PackedColorArray(0.403922, 0.698039, 0.435294, 1, 0.298039, 0.635294, 0.803922, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xblxk"]
-gradient = SubResource("Gradient_cpmfb")
+gradient = SubResource("Gradient_thsp2")
 use_hdr = true
 fill_from = Vector2(0, 1)
 
@@ -104,7 +104,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("4_ewxdl")
 text = "START"
-icon = ExtResource("2_vjocl")
+icon = ExtResource("5_66jgi")
 alignment = 0
 expand_icon = true
 script = ExtResource("6_cmkkl")
@@ -115,7 +115,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("4_ewxdl")
 text = "EXIT"
-icon = ExtResource("5_6vefq")
+icon = ExtResource("7_w5r6b")
 alignment = 0
 expand_icon = true
 script = ExtResource("1_ok7ew")

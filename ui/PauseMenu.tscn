@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcep4ycxih8c4"]
+
+[ext_resource type="Script" path="res://ui/scripts/PauseMenuController.gd" id="1_fkim3"]
+[ext_resource type="Texture2D" uid="uid://bsummrrwrsgxs" path="res://ui/assets/icons/menu.svg" id="2_oxyor"]
+[ext_resource type="Script" path="res://ui/scripts/data/PrintGameName.gd" id="3_e5i0t"]
+[ext_resource type="Texture2D" uid="uid://bpjfvxmo6b73r" path="res://ui/assets/icons/arrow-expand-left.svg" id="4_b2516"]
+[ext_resource type="Texture2D" uid="uid://dpwtcjeyi8w8q" path="res://ui/assets/icons/play.svg" id="5_lldf8"]
+[ext_resource type="Texture2D" uid="uid://b1pnip78xgipi" path="res://ui/assets/icons/home.svg" id="6_2vs0p"]
+[ext_resource type="Texture2D" uid="uid://ctafohyq8eh31" path="res://ui/assets/icons/refresh.svg" id="6_hr0ad"]
+[ext_resource type="Texture2D" uid="uid://b5cxkgufwto12" path="res://ui/assets/icons/close.svg" id="7_gtpmv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yry5l"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+border_width_right = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwu7u"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_fkim3")
+
+[node name="Viewport" type="AspectRatioContainer" parent="."]
+ratio = 1.4
+stretch_mode = 1
+
+[node name="Container" type="MarginContainer" parent="Viewport"]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 8
+
+[node name="Button" type="Button" parent="Viewport/Container"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+icon = ExtResource("2_oxyor")
+icon_alignment = 1
+
+[node name="Shadow" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Color" type="ColorRect" parent="Shadow"]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 2
+
+[node name="MenuDrawer" type="PanelContainer" parent="."]
+process_mode = 3
+clip_contents = true
+custom_minimum_size = Vector2(320, 720)
+offset_left = -320.0
+offset_bottom = 720.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yry5l")
+
+[node name="Layout" type="VBoxContainer" parent="MenuDrawer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="MenuDrawer/Layout"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MenuDrawer/Layout/Header"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.317647, 0.317647, 0.317647, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "{name}"
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+script = ExtResource("3_e5i0t")
+
+[node name="Button" type="Button" parent="MenuDrawer/Layout/Header"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+icon = ExtResource("4_b2516")
+icon_alignment = 1
+
+[node name="(spacer)1" type="HSeparator" parent="MenuDrawer/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 64
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mwu7u")
+
+[node name="Continue" type="Button" parent="MenuDrawer/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_constants/h_separation = 8
+text = "CONTINUE"
+icon = ExtResource("5_lldf8")
+alignment = 0
+expand_icon = true
+
+[node name="Retry" type="Button" parent="MenuDrawer/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_constants/h_separation = 8
+text = "RETRY"
+icon = ExtResource("6_hr0ad")
+alignment = 0
+expand_icon = true
+
+[node name="ExitToMenu" type="Button" parent="MenuDrawer/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_constants/h_separation = 8
+text = "EXIT TO MENU"
+icon = ExtResource("6_2vs0p")
+alignment = 0
+expand_icon = true
+
+[node name="Exit" type="Button" parent="MenuDrawer/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_constants/h_separation = 8
+text = "EXIT GAME"
+icon = ExtResource("7_gtpmv")
+alignment = 0
+expand_icon = true

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game/scripts/TilemapGizmo.gd" id="1_auf38"]
 [ext_resource type="PackedScene" uid="uid://jhftfbxccx41" path="res://game/entities/Gear/Gear.tscn" id="1_ky8nj"]
 [ext_resource type="Script" path="res://game/entities/Consumer/scripts/ConsumerController.gd" id="1_o5oc1"]
-[ext_resource type="Texture2D" uid="uid://dv844vaudvo5v" path="res://ui/assets/heart.svg" id="3_gr834"]
+[ext_resource type="Texture2D" uid="uid://dv844vaudvo5v" path="res://ui/assets/icons/heart.svg" id="4_2caff"]
 [ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="4_orbuh"]
 
 [node name="Consumer1" type="Node2D"]
@@ -14,9 +14,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_auf38")
 
-[node name="PowerConsumer" parent="." instance=ExtResource("1_ky8nj")]
+[node name="Consumer" parent="." instance=ExtResource("1_ky8nj")]
 freeze = true
+locked = true
+should_listen = true
 color = Color(0.87451, 0.164706, 0.290196, 1)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="UI" type="MarginContainer" parent="."]
 anchors_preset = 8
@@ -33,7 +38,7 @@ grow_vertical = 2
 
 [node name="HearthSign" type="TextureRect" parent="UI"]
 layout_mode = 2
-texture = ExtResource("3_gr834")
+texture = ExtResource("4_2caff")
 
 [node name="TimeLeft" type="Label" parent="UI"]
 layout_mode = 2
@@ -45,5 +50,3 @@ theme_override_font_sizes/font_size = 24
 text = "60
 "
 horizontal_alignment = 1
-
-[node name="Timer" type="Timer" parent="."]

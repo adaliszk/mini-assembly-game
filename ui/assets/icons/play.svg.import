@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhqrvheje5ehd"
-path="res://.godot/imported/flash.svg-aba0f6a0f99a98ebf017c592b7c3456e.ctex"
+uid="uid://dpwtcjeyi8w8q"
+path="res://.godot/imported/play.svg-6e11631c470fc7234c44a516961b928d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/assets/flash.svg"
-dest_files=["res://.godot/imported/flash.svg-aba0f6a0f99a98ebf017c592b7c3456e.ctex"]
+source_file="res://ui/assets/icons/play.svg"
+dest_files=["res://.godot/imported/play.svg-6e11631c470fc7234c44a516961b928d.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -26,7 +26,7 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

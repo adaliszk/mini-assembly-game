@@ -1,4 +1,5 @@
 @tool
+class_name GameStateController
 extends CanvasLayer
 
 @export var score_widget: Container

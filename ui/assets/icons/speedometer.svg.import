@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brbell4fae88h"
-path="res://.godot/imported/speedometer.svg-121be23d1ae1ea80a594beda1d83fc9a.ctex"
+path="res://.godot/imported/speedometer.svg-07488aa093ceaa45bb54edcb759a50ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/assets/speedometer.svg"
-dest_files=["res://.godot/imported/speedometer.svg-121be23d1ae1ea80a594beda1d83fc9a.ctex"]
+source_file="res://ui/assets/icons/speedometer.svg"
+dest_files=["res://.godot/imported/speedometer.svg-07488aa093ceaa45bb54edcb759a50ad.ctex"]
 
 [params]
 

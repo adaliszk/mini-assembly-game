@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3g4oyiixpjf7"]
+
+[ext_resource type="Script" path="res://game/scripts/StageManager.gd" id="1_4ex20"]
+[ext_resource type="PackedScene" uid="uid://batuxcgqcmqvw" path="res://game/entities/Power/Power.tscn" id="2_74qlt"]
+[ext_resource type="PackedScene" uid="uid://pklf8mfxq2nu" path="res://ui/components/TooltipBubble.tscn" id="3_0i17a"]
+[ext_resource type="PackedScene" uid="uid://bwxeyungmo5h6" path="res://game/entities/Consumer/Consumer.tscn" id="4_85twv"]
+[ext_resource type="PackedScene" uid="uid://bnvwpmstdmje7" path="res://game/entities/Gear/Spawner.tscn" id="5_w88wq"]
+
+[sub_resource type="TileSet" id="TileSet_qrx42"]
+
+[node name="Introduction" type="Node2D"]
+script = ExtResource("1_4ex20")
+
+[node name="Stage1" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_qrx42")
+format = 2
+
+[node name="Power" parent="Stage1" instance=ExtResource("2_74qlt")]
+position = Vector2(344, 344)
+
+[node name="TooltipBubble" parent="Stage1/Power" instance=ExtResource("3_0i17a")]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -47.0
+offset_right = 76.0
+grow_vertical = 0
+theme_override_constants/margin_bottom = 92
+tooltip = "I supply power"
+
+[node name="Consumer" parent="Stage1" instance=ExtResource("4_85twv")]
+position = Vector2(936, 344)
+max_health = 60
+health = 45
+
+[node name="TooltipBubble" parent="Stage1/Consumer" instance=ExtResource("3_0i17a")]
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -139.0
+offset_right = 76.0
+grow_vertical = 0
+theme_override_constants/margin_bottom = 92
+tooltip = "I need power"
+
+[node name="Actions" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 612.0
+offset_top = 664.0
+offset_right = 668.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 64
+
+[node name="Spawner1" parent="Actions" node_paths=PackedStringArray("spawn_container") instance=ExtResource("5_w88wq")]
+layout_mode = 2
+inventory = 4
+spawn_container = NodePath("../../Stage1")
+
+[node name="TooltipBubble" parent="Actions/Spawner1" instance=ExtResource("3_0i17a")]
+layout_mode = 1
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -79.0
+offset_right = 76.0
+grow_vertical = 0
+theme_override_constants/margin_bottom = 80
+tooltip = "You can add these to solve the problem!"
+
+[connection signal="satisfied" from="Stage1/Consumer" to="." method="meet_win_condition" flags=6]
+[connection signal="scored" from="Stage1/Consumer" to="Stage1/Consumer/TooltipBubble" method="update" binds= ["I need to charge to 60 to be happy!"]]

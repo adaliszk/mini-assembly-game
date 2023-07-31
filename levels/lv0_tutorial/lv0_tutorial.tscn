@@ -1,12 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://djdq4w5of8rli"]
+[gd_scene load_steps=9 format=3 uid="uid://djdq4w5of8rli"]
 
 [ext_resource type="Script" path="res://game/scripts/LevelManager.gd" id="1_nw1oq"]
 [ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="1_optwu"]
 [ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="2_viv6v"]
-[ext_resource type="PackedScene" uid="uid://c7xc1kjd57whq" path="res://ui/TopPanel.tscn" id="3_7w0rd"]
-[ext_resource type="PackedScene" uid="uid://batuxcgqcmqvw" path="res://game/entities/Power/Power.tscn" id="3_jc6jv"]
-[ext_resource type="PackedScene" uid="uid://pklf8mfxq2nu" path="res://ui/components/TooltipBubble.tscn" id="4_em0kr"]
-[ext_resource type="PackedScene" uid="uid://bwxeyungmo5h6" path="res://game/entities/Consumer/Consumer.tscn" id="4_qscuq"]
+[ext_resource type="PackedScene" uid="uid://c7xc1kjd57whq" path="res://ui/GameStatePanel.tscn" id="3_7w0rd"]
+[ext_resource type="Script" path="res://levels/lv0_tutorial/config.gd" id="4_tr5yq"]
+[ext_resource type="PackedScene" uid="uid://dcep4ycxih8c4" path="res://ui/PauseMenu.tscn" id="8_ydqum"]
 
 [sub_resource type="Gradient" id="Gradient_w4dgo"]
 interpolation_mode = 2
@@ -18,13 +17,14 @@ gradient = SubResource("Gradient_w4dgo")
 use_hdr = true
 fill_from = Vector2(0, 1)
 
-[sub_resource type="TileSet" id="TileSet_qrx42"]
-
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_nw1oq")
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="BottomPanel" parent="." instance=ExtResource("2_viv6v")]
 layer = -1
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 anchors_preset = 15
@@ -53,45 +53,10 @@ texture = ExtResource("1_optwu")
 expand_mode = 3
 stretch_mode = 1
 
-[node name="Stages" type="Node2D" parent="."]
+[node name="StageContainer" type="Node2D" parent="."]
+script = ExtResource("4_tr5yq")
 
-[node name="Introduction" type="Node2D" parent="Stages"]
-
-[node name="TileMap" type="TileMap" parent="Stages/Introduction"]
-tile_set = SubResource("TileSet_qrx42")
-format = 2
-
-[node name="Power" parent="Stages/Introduction/TileMap" instance=ExtResource("3_jc6jv")]
-position = Vector2(344, 344)
-
-[node name="TooltipBubble" parent="Stages/Introduction/TileMap/Power" instance=ExtResource("4_em0kr")]
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -76.0
-offset_top = -47.0
-offset_right = 76.0
-grow_vertical = 0
-theme_override_constants/margin_bottom = 92
-tooltip = "I supply power"
-
-[node name="Consumer" parent="Stages/Introduction/TileMap" instance=ExtResource("4_qscuq")]
-position = Vector2(936, 344)
-max_health = 60
-health = 45
-
-[node name="TooltipBubble" parent="Stages/Introduction/TileMap/Consumer" instance=ExtResource("4_em0kr")]
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -76.0
-offset_top = -139.0
-offset_right = 76.0
-grow_vertical = 0
-theme_override_constants/margin_bottom = 92
-tooltip = "I need power"
-
-[node name="BottomPanel" parent="." instance=ExtResource("2_viv6v")]
-
-[node name="TopPanel" parent="." instance=ExtResource("3_7w0rd")]
+[node name="GameStatePanel" parent="." instance=ExtResource("3_7w0rd")]
 show_score = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_ydqum")]

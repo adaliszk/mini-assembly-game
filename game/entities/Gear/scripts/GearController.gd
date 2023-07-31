@@ -2,8 +2,9 @@
 class_name Gear
 extends RigidBody2D
 
-signal rotated
-signal cycled
+signal power_changed(state: bool)
+signal connection_changed(state: bool)
+signal score
 
 
 @export var locked: bool = false:
@@ -12,12 +13,32 @@ signal cycled
 		locked = value
 		update()
 
+@export var should_listen: bool = false
 @export var connected: Gear:
 	set(value):
+		Log.info("Set connection to: %s" % value, str(self))
+		if value == null and connected is Gear and connected.connected == self:
+			connected.connected = null
+
 		powered = true if value and value.powered else false
+
+		if should_listen and value == null:
+			Log.debug("Unsubscribe from score events!", str(self))
+			connected.score.disconnect(_on_score_timer.bind(self))
+
+		if should_listen and value is Gear:
+			Log.info("Unsubscribe from score events from: %s" % value, str(self))
+			value.score.connect(_on_score_timer.bind(self))
+
+		freeze = value is Gear if  not locked else freeze
 		connected = value
 
-@export var powered: bool = false
+		emit_signal("connection_changed", value is Gear)
+
+@export var powered: bool = false:
+	set(value):
+		powered = value
+		emit_signal("power_changed", value)
 
 @export var torque: float = 1.0:
 	get:
@@ -58,14 +79,10 @@ signal cycled
 @onready var gizmo: TilemapGizmo = $TilemapGizmo
 @onready var texture: Node2D = $Texture
 @onready var handler: Button = $Handler
+@onready var score_timer: Timer = $ScoreTimer
 
 @onready var debug_info: MarginContainer = $DebugInfo
 @onready var debug_data: Container = $DebugInfo/Widget/Container/Data
-
-
-var rotation_slice: float = PI / 8
-var rotation_phase: int = 1
-var cycle_count: int = 0
 
 var is_dragging: bool = false
 var drag_speed: float = 6.0
@@ -75,8 +92,16 @@ var collider: CollisionShape2D
 
 func _ready() -> void:
 	debug_info.hide()
+	score_timer.timeout.connect(_on_score_timer.bind(self))
+	score.connect(func(): Log.debug("score!", str(self)))
 	handler.pressed.connect(func(): _on_drag_start())
 	update()
+
+
+func _on_score_timer(_event) -> void:
+	if Engine.is_editor_hint():
+		return
+	emit_signal("score")
 
 
 func _on_drag_start() -> void:
@@ -126,20 +151,16 @@ func _physics_process(delta) -> void:
 	if is_dragging:
 		_on_dragging(delta)
 
-	if texture.rotation >= PI * 2:
-		emit_signal("cycled")
-		texture.rotation = 0
-		rotation_phase = 1
-		cycle_count += 1
+	if connected and connected.connected == null and not connected.powered:
+		connected = null
+		score_timer.stop()
 
-	if texture.rotation >= rotation_slice * rotation_phase:
-		emit_signal("rotated")
-		rotation_phase += 1
 
 func _process(delta) -> void:
 	if Engine.is_editor_hint():
 		return
-
+	if connected == null and not powered:
+		return
 	texture.rotation += direction * speed * PI * delta
 
 
@@ -169,11 +190,14 @@ func update() -> void:
 	handler.custom_minimum_size = Vector2(gear_size * 2, gear_size * 2)
 	texture.size = ceil(gear_size)
 
+	score_timer.wait_time = INF if not connected else speed * 0.5
+	score_timer.start()
+
 
 func update_color() -> void:
 	if texture == null:
 		return
-	texture.color = color if locked == false else Color(0.45, 0.45, 0.45)
+	texture.color = color
 	texture.queue_redraw()
 
 
@@ -187,10 +211,10 @@ func update_connections() -> void:
 			self.connected = node
 		if not node.powered and not node.connected:
 			node.connected = self
+	update()
 
 func update_debuginfo() -> void:
 	if debug_info:
-		debug_info.show()
 		for label in debug_data.get_children():
 			if label is Label:
 				var property_name = label.name.to_lower()

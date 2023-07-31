@@ -16,8 +16,9 @@ enum Direction { LEFT, RIGHT, TOP, BOTTOM }
 func _ready() -> void:
 	update()
 
-
-func update() -> void:
+func update(text: String = "") -> void:
 	if label == null:
 		return
+	if text != "":
+		tooltip = text
 	label.text = tooltip

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://b66wnai1y8pfp"]
+
+[ext_resource type="Script" path="res://game/scripts/StageManager.gd" id="1_7wws5"]
+[ext_resource type="PackedScene" uid="uid://batuxcgqcmqvw" path="res://game/entities/Power/Power.tscn" id="2_4hae2"]
+[ext_resource type="PackedScene" uid="uid://bwxeyungmo5h6" path="res://game/entities/Consumer/Consumer.tscn" id="3_f7q0j"]
+[ext_resource type="PackedScene" uid="uid://bnvwpmstdmje7" path="res://game/entities/Gear/Spawner.tscn" id="4_v346q"]
+
+[sub_resource type="TileSet" id="TileSet_qrx42"]
+
+[node name="Multiple" type="Node2D"]
+script = ExtResource("1_7wws5")
+win_conditions = 2
+
+[node name="Stage2" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_qrx42")
+format = 2
+
+[node name="Power" parent="Stage2" instance=ExtResource("2_4hae2")]
+position = Vector2(616, 152)
+
+[node name="Consumer1" parent="Stage2" instance=ExtResource("3_f7q0j")]
+position = Vector2(216, 456)
+max_health = 60
+health = 45
+
+[node name="Consumer2" parent="Stage2" instance=ExtResource("3_f7q0j")]
+position = Vector2(1032, 456)
+max_health = 60
+health = 45
+
+[node name="Control" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 612.0
+offset_top = 664.0
+offset_right = 668.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 64
+
+[node name="Spawner1" parent="Control" node_paths=PackedStringArray("spawn_container") instance=ExtResource("4_v346q")]
+layout_mode = 2
+inventory = 6
+spawn_container = NodePath("../../Stage2")
+
+[connection signal="satisfied" from="Stage2/Consumer1" to="." method="meet_win_condition" flags=6]
+[connection signal="satisfied" from="Stage2/Consumer2" to="." method="meet_win_condition"]

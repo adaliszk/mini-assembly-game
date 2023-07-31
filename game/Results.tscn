@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://tnq0s4skv4ln"]
+
+[ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="1_1cfe1"]
+[ext_resource type="PackedScene" uid="uid://dehmbmk4b3n6q" path="res://ui/components/ReleaseOverlay.tscn" id="2_14mln"]
+[ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="3_1inry"]
+[ext_resource type="Texture2D" uid="uid://ctafohyq8eh31" path="res://ui/assets/icons/refresh.svg" id="4_1quj5"]
+[ext_resource type="Texture2D" uid="uid://b1pnip78xgipi" path="res://ui/assets/icons/home.svg" id="4_j3587"]
+[ext_resource type="Script" path="res://ui/scripts/LevelLoader.gd" id="5_shw44"]
+[ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="5_telxx"]
+[ext_resource type="PackedScene" uid="uid://jgqnvedxxnxv" path="res://game/Main.tscn" id="6_1nmt4"]
+
+[sub_resource type="Gradient" id="Gradient_cpmfb"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(0.403922, 0.698039, 0.435294, 1, 0.298039, 0.635294, 0.803922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h05br"]
+gradient = SubResource("Gradient_cpmfb")
+use_hdr = true
+fill_from = Vector2(0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f7p5u"]
+
+[node name="Results" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.12549)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_h05br")
+
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.0196078)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1cfe1")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameReleaseOverlay" parent="UI" instance=ExtResource("2_14mln")]
+
+[node name="MainMenu" type="MarginContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -141.0
+offset_right = 96.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Layout" type="VBoxContainer" parent="UI/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="UI/MainMenu/Layout"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.317647, 0.317647, 0.317647, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "FINISHED!"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="(flex-grow)" type="HSeparator" parent="UI/MainMenu/Layout"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_f7p5u")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MainMenu/Layout"]
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="UI/MainMenu/Layout/HBoxContainer"]
+custom_minimum_size = Vector2(210, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 8
+theme_override_fonts/font = ExtResource("3_1inry")
+text = "BACK TO MENU"
+icon = ExtResource("4_j3587")
+alignment = 0
+expand_icon = true
+script = ExtResource("5_telxx")
+scene = ExtResource("6_1nmt4")
+
+[node name="Retry" type="Button" parent="UI/MainMenu/Layout/HBoxContainer"]
+custom_minimum_size = Vector2(160, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 8
+theme_override_fonts/font = ExtResource("3_1inry")
+text = "REPLAY"
+icon = ExtResource("4_1quj5")
+alignment = 0
+expand_icon = true
+script = ExtResource("5_shw44")

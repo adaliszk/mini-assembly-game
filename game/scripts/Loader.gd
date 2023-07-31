@@ -23,15 +23,20 @@ func _ready() -> void:
 	progress_tip.text = LOADER_TIPS[randi() % LOADER_TIPS.size()]
 
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var progress = []
 	var status = ResourceLoader.load_threaded_get_status(AppState.loader_target, progress)
+	Log.debug("Threaded load: %s" % [LoadStatus.keys()[status]])
 
 	if status == LoadStatus.THREAD_LOAD_FAILED:
 		Log.error("Threaded load failed: %s" % [LoadStatus.keys()[status]])
 
 	if status == LoadStatus.THREAD_LOAD_IN_PROGRESS:
-		progress_bar.value = progress[0] as float
+		var sum = 0.0
+		for p in progress:
+			sum += p
+		Log.debug("Threaded load progress: %s" % [sum])
+		progress_bar.value = sum
 
 	if status == LoadStatus.THREAD_LOAD_LOADED:
 		Log.info("Threaded load completed")

@@ -10,16 +10,16 @@ config_version=5
 
 [application]
 
-config/name="ChronoGear Assembly"
+config/name="Mini Assembly"
+config/tags=PackedStringArray("gamejam")
 run/main_scene="res://game/Main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-run/low_processor_mode=true
+run/max_fps=120
 boot_splash/bg_color=Color(1, 1, 1, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
-Log="*res://addons/tinylogger/Logger.gd"
 AppState="*res://globals/AppState.gd"
 GameSettings="*res://globals/GameSettings.gd"
 GameState="*res://globals/GameState.gd"
@@ -80,13 +80,10 @@ cancel_item={
 
 [physics]
 
-2d/run_on_separate_thread=true
-3d/run_on_separate_thread=true
 common/physics_ticks_per_second=30
 
 [rendering]
 
-driver/threads/thread_model=2
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1
 viewport/transparent_background=true

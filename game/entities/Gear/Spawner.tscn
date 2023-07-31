@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnvwpmstdmje7"]
+
+[ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="1_0sodh"]
+[ext_resource type="Texture2D" uid="uid://b47as1x6nnlfe" path="res://ui/assets/icons/cog.svg" id="2_w3uxv"]
+[ext_resource type="Script" path="res://game/entities/Gear/scripts/SpawnGear.gd" id="3_msgqc"]
+
+[node name="Spawner1" type="Button" node_paths=PackedStringArray("spawn_location")]
+custom_minimum_size = Vector2(112, 0)
+theme_override_constants/h_separation = 8
+theme_override_fonts/font = ExtResource("1_0sodh")
+theme_override_font_sizes/font_size = 32
+action_mode = 0
+icon = ExtResource("2_w3uxv")
+flat = true
+script = ExtResource("3_msgqc")
+spawn_location = NodePath(".")
+
+[node name="Layout" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_right = 80.0
+offset_bottom = 21.0
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = -2
+
+[node name="Label" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_0sodh")
+theme_override_font_sizes/font_size = 32
+text = "10"
