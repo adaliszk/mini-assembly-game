@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://pklf8mfxq2nu"]
+
+[ext_resource type="Script" path="res://ui/scripts/TooltipController.gd" id="1_2ljo5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll7qg"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 64
+corner_radius_top_right = 64
+corner_radius_bottom_right = 64
+corner_radius_bottom_left = 64
+
+[node name="TooltipBubble" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ljo5")
+
+[node name="Bubble" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ll7qg")
+
+[node name="Layout" type="VBoxContainer" parent="Bubble"]
+layout_mode = 2
+
+[node name="Content" type="Label" parent="Bubble/Layout"]
+texture_filter = 4
+custom_minimum_size = Vector2(128, 22)
+layout_mode = 2
+size_flags_vertical = 3
+text = "{tooltip}"
+horizontal_alignment = 1
+vertical_alignment = 1

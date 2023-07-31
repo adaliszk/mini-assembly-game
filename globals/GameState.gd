@@ -43,4 +43,4 @@ func queue_update(event: String = "*") -> void:
 	for event_name in event_list:
 		if event == "*" or event_name == event:
 			var property = event_name.split("_")[0]
-			emit_signal(event_name, get(property))
+			emit_signal(event_name, self[property])

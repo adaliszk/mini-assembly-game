@@ -1,0 +1,191 @@
+[gd_scene load_steps=15 format=3 uid="uid://c7xc1kjd57whq"]
+
+[ext_resource type="Texture2D" uid="uid://bsummrrwrsgxs" path="res://ui/assets/menu.svg" id="1_5hq0k"]
+[ext_resource type="Script" path="res://ui/scripts/TopPanelController.gd" id="1_gn26v"]
+[ext_resource type="Texture2D" uid="uid://d11kgb4tyke7b" path="res://ui/assets/star.svg" id="2_5hu3h"]
+[ext_resource type="FontFile" uid="uid://58hhqiuih8eo" path="res://ui/assets/Raleway-Regular.ttf" id="2_mii87"]
+[ext_resource type="Texture2D" uid="uid://dv844vaudvo5v" path="res://ui/assets/heart.svg" id="2_t3fr5"]
+[ext_resource type="Script" path="res://ui/scripts/data/PrintLevel.gd" id="4_efgl8"]
+[ext_resource type="Script" path="res://ui/scripts/data/UpdateHealthbar.gd" id="5_gsc17"]
+[ext_resource type="Script" path="res://ui/scripts/data/PrintScore.gd" id="6_2ukdj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8fxj"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.12549)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skixq"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.12549)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jusdu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0urg"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.12549)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thif3"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.12549)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t400m"]
+bg_color = Color(0.87451, 0.164706, 0.290196, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[node name="TopPanel" type="CanvasLayer" node_paths=PackedStringArray("score_widget", "health_widget")]
+script = ExtResource("1_gn26v")
+score_widget = NodePath("AspectRatioContainer/MarginContainer/Status/ScoreWidget")
+health_widget = NodePath("AspectRatioContainer/MarginContainer/Status/HealthWidget")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -312.5
+offset_right = 312.5
+offset_bottom = 88.0
+grow_horizontal = 2
+ratio = 1.4
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 8
+
+[node name="Status" type="HBoxContainer" parent="AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Menu" type="Button" parent="AspectRatioContainer/MarginContainer/Status"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_l8fxj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_skixq")
+icon = ExtResource("1_5hq0k")
+icon_alignment = 1
+
+[node name="Level" type="Label" parent="AspectRatioContainer/MarginContainer/Status"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.196078, 0.196078, 0.196078, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_mii87")
+theme_override_font_sizes/font_size = 24
+text = "%s: %s"
+vertical_alignment = 1
+uppercase = true
+script = ExtResource("4_efgl8")
+
+[node name="(flex-grow)1" type="VSeparator" parent="AspectRatioContainer/MarginContainer/Status"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_jusdu")
+
+[node name="ScoreWidget" type="PanelContainer" parent="AspectRatioContainer/MarginContainer/Status"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0urg")
+
+[node name="Container" type="MarginContainer" parent="AspectRatioContainer/MarginContainer/Status/ScoreWidget"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 4
+
+[node name="Layout" type="HBoxContainer" parent="AspectRatioContainer/MarginContainer/Status/ScoreWidget/Container"]
+layout_mode = 2
+
+[node name="ScoreIcon" type="TextureRect" parent="AspectRatioContainer/MarginContainer/Status/ScoreWidget/Container/Layout"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_5hu3h")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Score" type="Label" parent="AspectRatioContainer/MarginContainer/Status/ScoreWidget/Container/Layout"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 24
+text = "{score}"
+vertical_alignment = 1
+script = ExtResource("6_2ukdj")
+
+[node name="HealthWidget" type="MarginContainer" parent="AspectRatioContainer/MarginContainer/Status"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="AspectRatioContainer/MarginContainer/Status/HealthWidget"]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_styles/background = SubResource("StyleBoxFlat_thif3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t400m")
+value = 50.0
+show_percentage = false
+script = ExtResource("5_gsc17")
+
+[node name="IconContainer" type="MarginContainer" parent="AspectRatioContainer/MarginContainer/Status/HealthWidget"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HealthIcon" type="TextureRect" parent="AspectRatioContainer/MarginContainer/Status/HealthWidget/IconContainer"]
+layout_mode = 2
+size_flags_vertical = 5
+texture = ExtResource("2_t3fr5")
+expand_mode = 1
+stretch_mode = 4

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://batuxcgqcmqvw"]
+
+[ext_resource type="PackedScene" uid="uid://jhftfbxccx41" path="res://game/entities/Gear/Gear.tscn" id="1_0r4ok"]
+[ext_resource type="Script" path="res://game/scripts/TilemapGizmo.gd" id="1_ihv4a"]
+[ext_resource type="Texture2D" uid="uid://dhqrvheje5ehd" path="res://ui/assets/flash.svg" id="3_j20mp"]
+
+[node name="Power" type="Node2D"]
+
+[node name="TilemapGizmo" type="Container" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ihv4a")
+
+[node name="PowerSource" parent="." instance=ExtResource("1_0r4ok")]
+freeze = true
+powered = true
+torque = 2.0
+speed = 0.5
+direction = 1
+color = Color(0.643137, 0.443137, 0.180392, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -50.0
+offset_right = 48.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 12
+
+[node name="Hearth Sign" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_j20mp")
