@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://v4mk4mag8u2x"]
+
+[ext_resource type="Script" path="res://game/entities/SpawnChecker.gd" id="1_am22d"]
+
+[node name="SpawnChecker" type="Area2D"]
+script = ExtResource("1_am22d")

@@ -173,7 +173,7 @@ func update() -> void:
 	if texture == null:
 		return
 
-	var gear_size = size * GameSettings.CELL_SIZE * 4
+	var gear_size = EntityUtils.size_to_px(size)
 	update_color()
 
 	if OS.is_debug_build():
@@ -184,7 +184,7 @@ func update() -> void:
 
 	collider = CollisionShape2D.new()
 	collider.shape = CircleShape2D.new()
-	collider.shape.radius = gear_size + texture.tooth_length / 8
+	collider.shape.radius = EntityUtils.size_to_collider_px(size)
 	add_child(collider)
 
 	handler.custom_minimum_size = Vector2(gear_size * 2, gear_size * 2)

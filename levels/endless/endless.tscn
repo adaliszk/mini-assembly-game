@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmi0oiy5br3pa"]
+
+[ext_resource type="Script" path="res://levels/endless/endless.gd" id="1_tr5dj"]
+[ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="2_31bqu"]
+[ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="3_i8rff"]
+[ext_resource type="PackedScene" uid="uid://c7xc1kjd57whq" path="res://ui/GameStatePanel.tscn" id="5_wmpvn"]
+[ext_resource type="PackedScene" uid="uid://dcep4ycxih8c4" path="res://ui/PauseMenu.tscn" id="6_gipwe"]
+[ext_resource type="PackedScene" uid="uid://bnvwpmstdmje7" path="res://game/entities/Gear/Spawner.tscn" id="7_bxeq1"]
+
+[sub_resource type="Gradient" id="Gradient_w4dgo"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(0.403922, 0.698039, 0.435294, 1, 0.298039, 0.635294, 0.803922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l412e"]
+gradient = SubResource("Gradient_w4dgo")
+use_hdr = true
+fill_from = Vector2(0, 1)
+
+[sub_resource type="TileSet" id="TileSet_ietoj"]
+
+[node name="Endless" type="Node2D" node_paths=PackedStringArray("map", "actions")]
+script = ExtResource("1_tr5dj")
+map = NodePath("LevelContainer/Stage")
+actions = NodePath("LevelContainer/Actions")
+
+[node name="BottomPanel" parent="." instance=ExtResource("2_31bqu")]
+layer = -1
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.12549)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_l412e")
+
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.0196078)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_i8rff")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="LevelContainer" type="Node2D" parent="."]
+
+[node name="Stage" type="TileMap" parent="LevelContainer"]
+tile_set = SubResource("TileSet_ietoj")
+format = 2
+
+[node name="Actions" type="MarginContainer" parent="LevelContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 612.0
+offset_top = 664.0
+offset_right = 668.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+
+[node name="Spawner1" parent="LevelContainer/Actions" node_paths=PackedStringArray("spawn_container") instance=ExtResource("7_bxeq1")]
+layout_mode = 2
+inventory = 4
+spawn_container = NodePath("../../Stage")
+
+[node name="GameStatePanel" parent="." instance=ExtResource("5_wmpvn")]
+show_stage = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_gipwe")]

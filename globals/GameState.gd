@@ -36,6 +36,8 @@ var health = 100:
 	set(value):
 		health = clamp(value, 0, max_health)
 		queue_update("health_changed")
+		if health == 0:
+			emit_signal("game_over")
 
 
 func queue_update(event: String = "*") -> void:

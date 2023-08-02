@@ -3,7 +3,12 @@ extends Button
 
 signal object_spawned(object: Node)
 
-@export var inventory: int = 10
+@export var inventory: int = 10:
+	set(value):
+		if label:
+			label.text = str(value)
+		inventory = value
+
 @export var spawn_location: Node = self
 @export var spawn_object: PackedScene = preload("res://game/entities/Gear/Gear.tscn")
 @export var spawn_container: TileMap

@@ -9,13 +9,13 @@
 [ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="6_agw8p"]
 [ext_resource type="Texture2D" uid="uid://b5cxkgufwto12" path="res://ui/assets/icons/close.svg" id="7_w5r6b"]
 
-[sub_resource type="Gradient" id="Gradient_thsp2"]
+[sub_resource type="Gradient" id="Gradient_t0x2l"]
 interpolation_mode = 2
 interpolation_color_space = 2
 colors = PackedColorArray(0.403922, 0.698039, 0.435294, 1, 0.298039, 0.635294, 0.803922, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xblxk"]
-gradient = SubResource("Gradient_thsp2")
+gradient = SubResource("Gradient_t0x2l")
 use_hdr = true
 fill_from = Vector2(0, 1)
 
