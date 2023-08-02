@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://ui/scripts/data/PrintGameName.gd" id="2_ncfv3"]
 [ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="4_ewxdl"]
 [ext_resource type="Texture2D" uid="uid://dpwtcjeyi8w8q" path="res://ui/assets/icons/play.svg" id="5_66jgi"]
-[ext_resource type="Script" path="res://ui/scripts/LevelLoader.gd" id="6_cmkkl"]
+[ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="6_agw8p"]
 [ext_resource type="Texture2D" uid="uid://b5cxkgufwto12" path="res://ui/assets/icons/close.svg" id="7_w5r6b"]
 
 [sub_resource type="Gradient" id="Gradient_thsp2"]
@@ -58,15 +58,16 @@ stretch_mode = 1
 [node name="GameReleaseOverlay" parent="UI" instance=ExtResource("1_g576f")]
 
 [node name="MainMenu" type="MarginContainer" parent="UI"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -97.0
-offset_right = 354.0
-offset_bottom = 97.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_right = 128.0
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = -64
+theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 64
 
@@ -89,6 +90,7 @@ theme_override_constants/shadow_offset_x = -2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 32
 text = "{name}"
+horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 script = ExtResource("2_ncfv3")
@@ -107,7 +109,20 @@ text = "START"
 icon = ExtResource("5_66jgi")
 alignment = 0
 expand_icon = true
-script = ExtResource("6_cmkkl")
+script = ExtResource("6_agw8p")
+scene = "LevelSelector"
+
+[node name="Start" type="Button" parent="UI/MainMenu/Layout/Start"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 0
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("4_ewxdl")
+text = "START"
+icon = ExtResource("5_66jgi")
+alignment = 0
+expand_icon = true
+script = ExtResource("6_agw8p")
+scene = "LevelSelector"
 
 [node name="Exit" type="Button" parent="UI/MainMenu/Layout"]
 custom_minimum_size = Vector2(192, 64)

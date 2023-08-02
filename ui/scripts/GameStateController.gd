@@ -13,3 +13,9 @@ extends CanvasLayer
 	set(value):
 		health_widget.visible = value
 		show_health = value
+
+@export var stage_widget: Label
+@export var show_stage: bool = true:
+	set(value):
+		stage_widget.visible = value
+		show_stage = value

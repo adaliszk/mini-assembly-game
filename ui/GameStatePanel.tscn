@@ -51,10 +51,11 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 anti_aliasing = false
 
-[node name="TopPanel" type="CanvasLayer" node_paths=PackedStringArray("score_widget", "health_widget")]
+[node name="TopPanel" type="CanvasLayer" node_paths=PackedStringArray("score_widget", "health_widget", "stage_widget")]
 script = ExtResource("1_6s53b")
 score_widget = NodePath("AspectRatioContainer/MarginContainer/Status/ScoreWidget")
 health_widget = NodePath("AspectRatioContainer/MarginContainer/Status/HealthWidget")
+stage_widget = NodePath("AspectRatioContainer/MarginContainer/Status/Level")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 anchors_preset = 5

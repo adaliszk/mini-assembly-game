@@ -13,6 +13,10 @@ func _ready() -> void:
 	hide_drawer()
 
 
+func _exit_tree():
+	get_tree().paused = false
+
+
 func show_drawer() -> void:
 	menu_drawer.position.x = 0
 	get_tree().paused = true

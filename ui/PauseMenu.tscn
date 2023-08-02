@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcep4ycxih8c4"]
+[gd_scene load_steps=17 format=3 uid="uid://dcep4ycxih8c4"]
 
 [ext_resource type="Script" path="res://ui/scripts/PauseMenuController.gd" id="1_fkim3"]
 [ext_resource type="Texture2D" uid="uid://bsummrrwrsgxs" path="res://ui/assets/icons/menu.svg" id="2_oxyor"]
@@ -8,6 +8,37 @@
 [ext_resource type="Texture2D" uid="uid://b1pnip78xgipi" path="res://ui/assets/icons/home.svg" id="6_2vs0p"]
 [ext_resource type="Texture2D" uid="uid://ctafohyq8eh31" path="res://ui/assets/icons/refresh.svg" id="6_hr0ad"]
 [ext_resource type="Texture2D" uid="uid://b5cxkgufwto12" path="res://ui/assets/icons/close.svg" id="7_gtpmv"]
+[ext_resource type="Script" path="res://ui/scripts/ReloadLevel.gd" id="7_ygwen"]
+[ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="9_8qwxw"]
+[ext_resource type="Script" path="res://ui/scripts/ExitAction.gd" id="11_mobrp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23oq7"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+shadow_offset = Vector2(2.08165e-12, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2mcf"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 1
+shadow_offset = Vector2(2.08165e-12, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eou56"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yry5l"]
 content_margin_left = 32.0
@@ -39,6 +70,9 @@ custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_23oq7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o2mcf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eou56")
 icon = ExtResource("2_oxyor")
 icon_alignment = 1
 
@@ -116,6 +150,7 @@ text = "RETRY"
 icon = ExtResource("6_hr0ad")
 alignment = 0
 expand_icon = true
+script = ExtResource("7_ygwen")
 
 [node name="ExitToMenu" type="Button" parent="MenuDrawer/Layout"]
 custom_minimum_size = Vector2(0, 48)
@@ -125,6 +160,7 @@ text = "EXIT TO MENU"
 icon = ExtResource("6_2vs0p")
 alignment = 0
 expand_icon = true
+script = ExtResource("9_8qwxw")
 
 [node name="Exit" type="Button" parent="MenuDrawer/Layout"]
 custom_minimum_size = Vector2(0, 48)
@@ -134,3 +170,4 @@ text = "EXIT GAME"
 icon = ExtResource("7_gtpmv")
 alignment = 0
 expand_icon = true
+script = ExtResource("11_mobrp")

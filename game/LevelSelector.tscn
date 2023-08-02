@@ -1,0 +1,173 @@
+[gd_scene load_steps=11 format=3 uid="uid://dfncvqolj50og"]
+
+[ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="1_3v6ku"]
+[ext_resource type="PackedScene" uid="uid://dehmbmk4b3n6q" path="res://ui/components/ReleaseOverlay.tscn" id="2_3ulix"]
+[ext_resource type="Script" path="res://ui/scripts/ForwardPressed.gd" id="3_2wrmq"]
+[ext_resource type="Script" path="res://ui/scripts/LoadLevel.gd" id="4_v4wxb"]
+[ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="4_yu7vr"]
+[ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="5_7guxu"]
+[ext_resource type="Script" path="res://ui/scripts/ExitAction.gd" id="8_vrp55"]
+
+[sub_resource type="Gradient" id="Gradient_thsp2"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(0.403922, 0.698039, 0.435294, 1, 0.298039, 0.635294, 0.803922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xblxk"]
+gradient = SubResource("Gradient_thsp2")
+use_hdr = true
+fill_from = Vector2(0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81f6t"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.12549)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_xblxk")
+
+[node name="TextureRect2" type="TextureRect" parent="Background"]
+modulate = Color(1, 1, 1, 0.0196078)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3v6ku")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameReleaseOverlay" parent="UI" instance=ExtResource("2_3ulix")]
+
+[node name="MainMenu" type="MarginContainer" parent="UI"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_right = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 64
+
+[node name="Layout" type="VBoxContainer" parent="UI/MainMenu"]
+custom_minimum_size = Vector2(640, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="MarginContainer" parent="UI/MainMenu/Layout"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Title" type="Label" parent="UI/MainMenu/Layout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.317647, 0.317647, 0.317647, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "SELECT YOUR LEVEL"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="(flex-grow)1" type="HSeparator" parent="UI/MainMenu/Layout"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_81f6t")
+
+[node name="Selector" type="HBoxContainer" parent="UI/MainMenu/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Level0" type="PanelContainer" parent="UI/MainMenu/Layout/Selector" node_paths=PackedStringArray("button")]
+custom_minimum_size = Vector2(2.08165e-12, 240)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2wrmq")
+button = NodePath("Layout/Button")
+
+[node name="Layout" type="VBoxContainer" parent="UI/MainMenu/Layout/Selector/Level0"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="UI/MainMenu/Layout/Selector/Level0/Layout"]
+custom_minimum_size = Vector2(180, 64)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Tutorial"
+flat = true
+script = ExtResource("4_v4wxb")
+
+[node name="LevelINF" type="PanelContainer" parent="UI/MainMenu/Layout/Selector" node_paths=PackedStringArray("button")]
+custom_minimum_size = Vector2(2.08165e-12, 240)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2wrmq")
+button = NodePath("../Level0/Layout/Button")
+
+[node name="Layout" type="VBoxContainer" parent="UI/MainMenu/Layout/Selector/LevelINF"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="UI/MainMenu/Layout/Selector/LevelINF/Layout"]
+custom_minimum_size = Vector2(180, 64)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Endless"
+flat = true
+script = ExtResource("4_v4wxb")
+level = "endless"
+
+[node name="(flex-grow)2" type="HSeparator" parent="UI/MainMenu/Layout"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_81f6t")
+
+[node name="Actions" type="HBoxContainer" parent="UI/MainMenu/Layout"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="UI/MainMenu/Layout/Actions"]
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("4_yu7vr")
+text = "Back to Menu"
+expand_icon = true
+script = ExtResource("5_7guxu")
+
+[node name="Exit" type="Button" parent="UI/MainMenu/Layout/Actions"]
+visible = false
+custom_minimum_size = Vector2(192, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("4_yu7vr")
+text = "Exit"
+alignment = 0
+expand_icon = true
+script = ExtResource("8_vrp55")
