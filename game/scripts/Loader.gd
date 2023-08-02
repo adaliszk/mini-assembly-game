@@ -18,7 +18,8 @@ const LOADER_TIPS = [
 @export var progress_tip: Label
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
+	Log.info("Loadin level: %s" % AppState.loader_target)
 	ResourceLoader.load_threaded_request(AppState.loader_target)
 	progress_tip.text = LOADER_TIPS[randi() % LOADER_TIPS.size()]
 

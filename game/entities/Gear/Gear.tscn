@@ -36,7 +36,7 @@ linear_damp = 30.0
 script = ExtResource("1_8hny6")
 torque = 0.0
 speed = 0.0
-tooth_count = 32
+tooth_count = 19
 color = Color(0.298039, 0.635294, 0.803922, 1)
 
 [node name="ScoreTimer" type="Timer" parent="."]

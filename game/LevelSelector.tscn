@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfncvqolj50og"]
+[gd_scene load_steps=11 format=3 uid="uid://dfncvqolj50og"]
 
 [ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="1_3v6ku"]
 [ext_resource type="PackedScene" uid="uid://dehmbmk4b3n6q" path="res://ui/components/ReleaseOverlay.tscn" id="2_3ulix"]
-[ext_resource type="Script" path="res://ui/scripts/ForwardPressed.gd" id="3_2wrmq"]
 [ext_resource type="PackedScene" uid="uid://1yot22cf6n8" path="res://ui/CreditsOverlay.tscn" id="3_eebx8"]
 [ext_resource type="Script" path="res://ui/scripts/LoadLevel.gd" id="4_v4wxb"]
 [ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="4_yu7vr"]
@@ -105,42 +104,18 @@ layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Level0" type="PanelContainer" parent="UI/LevelSelector/Layout/Selector" node_paths=PackedStringArray("button")]
-custom_minimum_size = Vector2(2.08165e-12, 240)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-script = ExtResource("3_2wrmq")
-button = NodePath("Layout/Tutorial")
-
-[node name="Layout" type="VBoxContainer" parent="UI/LevelSelector/Layout/Selector/Level0"]
-layout_mode = 2
-alignment = 2
-
-[node name="Tutorial" type="Button" parent="UI/LevelSelector/Layout/Selector/Level0/Layout"]
-custom_minimum_size = Vector2(180, 64)
+[node name="Tutorial" type="Button" parent="UI/LevelSelector/Layout/Selector"]
+custom_minimum_size = Vector2(180, 240)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Tutorial"
-flat = true
 script = ExtResource("4_v4wxb")
 
-[node name="LevelINF" type="PanelContainer" parent="UI/LevelSelector/Layout/Selector" node_paths=PackedStringArray("button")]
-custom_minimum_size = Vector2(2.08165e-12, 240)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-script = ExtResource("3_2wrmq")
-button = NodePath("Layout/Endless")
-
-[node name="Layout" type="VBoxContainer" parent="UI/LevelSelector/Layout/Selector/LevelINF"]
-layout_mode = 2
-alignment = 2
-
-[node name="Endless" type="Button" parent="UI/LevelSelector/Layout/Selector/LevelINF/Layout"]
-custom_minimum_size = Vector2(180, 64)
+[node name="Endless" type="Button" parent="UI/LevelSelector/Layout/Selector"]
+custom_minimum_size = Vector2(180, 240)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Endless"
-flat = true
 script = ExtResource("4_v4wxb")
 level = "endless"
 

@@ -25,7 +25,7 @@ func _ready():
 	AppState.loader_target = "res://levels/endless/endless.tscn"
 	GameState.health = GameState.max_health
 	GameState.score = 0
-	GameState.game_over.connect(func(): )
+	GameState.game_over.connect(func(): get_tree().change_scene_to_file("res://game/Results.tscn"))
 	
 	spawn_check = SPAWN_CHECKER.instantiate()
 	spawn_check.size = 3
@@ -49,9 +49,9 @@ func _physics_process(_delta) -> void:
 	if spawn_queue.size() > 0:
 		var spawn_type = spawn_queue.pop_front()
 		var point = generate_point()
-		if point != null:
+		if point != null and point != Vector2.ZERO:
 			var item = self[spawn_type].instantiate()
-			item.position = point 
+			item.position = point
 			if item is Consumer:
 				item.scored.connect(func(): add_score())
 				consumers.append(item)

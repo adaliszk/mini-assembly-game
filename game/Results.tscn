@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://df45ow7qiqjwy"]
+[gd_scene load_steps=10 format=3 uid="uid://df45ow7qiqjwy"]
 
 [ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="1_1cfe1"]
 [ext_resource type="PackedScene" uid="uid://dehmbmk4b3n6q" path="res://ui/components/ReleaseOverlay.tscn" id="2_14mln"]
 [ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="3_1inry"]
+[ext_resource type="Script" path="res://ui/scripts/data/PrintScoreResult.gd" id="3_615p7"]
 [ext_resource type="Texture2D" uid="uid://dpwtcjeyi8w8q" path="res://ui/assets/icons/play.svg" id="5_2kyjd"]
 [ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="5_telxx"]
 
@@ -86,7 +87,7 @@ theme_override_colors/font_shadow_color = Color(0.317647, 0.317647, 0.317647, 1)
 theme_override_constants/shadow_offset_x = -2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 32
-text = "LEVEL DONE!"
+text = "That is the end!"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
@@ -96,7 +97,7 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_b6lu7")
 
-[node name="Title" type="Label" parent="UI/Content/Layout"]
+[node name="ScoreResult" type="Label" parent="UI/Content/Layout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.317647, 0.317647, 0.317647, 1)
@@ -107,6 +108,7 @@ text = "Your score: {score}"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
+script = ExtResource("3_615p7")
 
 [node name="(flex-grow)2" type="HSeparator" parent="UI/Content/Layout"]
 custom_minimum_size = Vector2(0, 64)
