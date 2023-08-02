@@ -10,6 +10,7 @@
 
 [node name="Introduction" type="Node2D"]
 script = ExtResource("1_4ex20")
+show_score = false
 
 [node name="Stage1" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_qrx42")

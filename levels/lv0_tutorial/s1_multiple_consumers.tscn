@@ -9,6 +9,7 @@
 
 [node name="Multiple" type="Node2D"]
 script = ExtResource("1_7wws5")
+show_score = false
 win_conditions = 2
 
 [node name="Stage2" type="TileMap" parent="."]
