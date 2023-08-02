@@ -108,13 +108,13 @@ custom_minimum_size = Vector2(2.08165e-12, 240)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("3_2wrmq")
-button = NodePath("Layout/Button")
+button = NodePath("Layout/Tutorial")
 
 [node name="Layout" type="VBoxContainer" parent="UI/MainMenu/Layout/Selector/Level0"]
 layout_mode = 2
 alignment = 2
 
-[node name="Button" type="Button" parent="UI/MainMenu/Layout/Selector/Level0/Layout"]
+[node name="Tutorial" type="Button" parent="UI/MainMenu/Layout/Selector/Level0/Layout"]
 custom_minimum_size = Vector2(180, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -127,13 +127,13 @@ custom_minimum_size = Vector2(2.08165e-12, 240)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("3_2wrmq")
-button = NodePath("../Level0/Layout/Button")
+button = NodePath("Layout/Endless")
 
 [node name="Layout" type="VBoxContainer" parent="UI/MainMenu/Layout/Selector/LevelINF"]
 layout_mode = 2
 alignment = 2
 
-[node name="Button" type="Button" parent="UI/MainMenu/Layout/Selector/LevelINF/Layout"]
+[node name="Endless" type="Button" parent="UI/MainMenu/Layout/Selector/LevelINF/Layout"]
 custom_minimum_size = Vector2(180, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2

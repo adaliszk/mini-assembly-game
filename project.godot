@@ -36,7 +36,7 @@ movie_writer/movie_file="C:/Users/adaliszk/Projects/godot-jamegam30/renders/edit
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/jamcountdown/plugin.cfg", "res://addons/tinylogger/plugin.cfg")
+enabled=PackedStringArray("res://addons/tinylogger/plugin.cfg")
 
 [gui]
 
