@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://cojln4auievf7"]
+
+[ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="1_iydpx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2on0"]
+
+[node name="Settings" type="MarginContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 128
+
+[node name="Layout" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(640, 2.08165e-12)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.317647, 0.317647, 0.317647, 1)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="(flex-grow)1" type="HSeparator" parent="Layout"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t2on0")
+
+[node name="Item1" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Layout/Item1"]
+custom_minimum_size = Vector2(240, 2.08165e-12)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Music volume:"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Layout/Item1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 75.0
+rounded = true
+tick_count = 9
+ticks_on_borders = true
+
+[node name="Item2" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Layout/Item2"]
+custom_minimum_size = Vector2(240, 2.08165e-12)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Effects volume:"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Layout/Item2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 75.0
+rounded = true
+tick_count = 9
+ticks_on_borders = true
+
+[node name="Item3" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Layout/Item3"]
+custom_minimum_size = Vector2(240, 2.08165e-12)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "UI volume:"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Layout/Item3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 75.0
+rounded = true
+tick_count = 9
+ticks_on_borders = true
+
+[node name="(flex-grow)2" type="HSeparator" parent="Layout"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_t2on0")
+
+[node name="Actions" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Button" type="Button" parent="Layout/Actions"]
+custom_minimum_size = Vector2(92, 48)
+layout_mode = 2
+text = "Back"
+script = ExtResource("1_iydpx")

@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://jgqnvedxxnxv"]
+[gd_scene load_steps=14 format=3 uid="uid://jgqnvedxxnxv"]
 
 [ext_resource type="PackedScene" uid="uid://dehmbmk4b3n6q" path="res://ui/components/ReleaseOverlay.tscn" id="1_g576f"]
 [ext_resource type="Script" path="res://ui/scripts/ExitAction.gd" id="1_ok7ew"]
 [ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="1_rdfrc"]
+[ext_resource type="PackedScene" uid="uid://1yot22cf6n8" path="res://ui/CreditsOverlay.tscn" id="2_8umuy"]
 [ext_resource type="Script" path="res://ui/scripts/data/PrintGameName.gd" id="2_ncfv3"]
 [ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="4_ewxdl"]
 [ext_resource type="Texture2D" uid="uid://dpwtcjeyi8w8q" path="res://ui/assets/icons/play.svg" id="5_66jgi"]
 [ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="6_agw8p"]
+[ext_resource type="Texture2D" uid="uid://drjkbwqsn13b" path="res://ui/assets/icons/tune.svg" id="7_mgvnl"]
 [ext_resource type="Texture2D" uid="uid://b5cxkgufwto12" path="res://ui/assets/icons/close.svg" id="7_w5r6b"]
 
 [sub_resource type="Gradient" id="Gradient_t0x2l"]
@@ -55,6 +57,8 @@ stretch_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="CreditsOverlay" parent="UI" instance=ExtResource("2_8umuy")]
+
 [node name="GameReleaseOverlay" parent="UI" instance=ExtResource("1_g576f")]
 
 [node name="MainMenu" type="MarginContainer" parent="UI"]
@@ -69,7 +73,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 64
+theme_override_constants/margin_bottom = 128
 
 [node name="Layout" type="VBoxContainer" parent="UI/MainMenu"]
 layout_mode = 2
@@ -104,6 +108,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_81f6t")
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/h_separation = 16
 theme_override_fonts/font = ExtResource("4_ewxdl")
 text = "START"
 icon = ExtResource("5_66jgi")
@@ -112,22 +117,25 @@ expand_icon = true
 script = ExtResource("6_agw8p")
 scene = "LevelSelector"
 
-[node name="Start" type="Button" parent="UI/MainMenu/Layout/Start"]
+[node name="Settings" type="Button" parent="UI/MainMenu/Layout"]
+visible = false
 custom_minimum_size = Vector2(192, 64)
-layout_mode = 0
+layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/h_separation = 16
 theme_override_fonts/font = ExtResource("4_ewxdl")
-text = "START"
-icon = ExtResource("5_66jgi")
+text = "SETTINGS"
+icon = ExtResource("7_mgvnl")
 alignment = 0
 expand_icon = true
 script = ExtResource("6_agw8p")
-scene = "LevelSelector"
+scene = "Settings"
 
 [node name="Exit" type="Button" parent="UI/MainMenu/Layout"]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/h_separation = 16
 theme_override_fonts/font = ExtResource("4_ewxdl")
 text = "EXIT"
 icon = ExtResource("7_w5r6b")

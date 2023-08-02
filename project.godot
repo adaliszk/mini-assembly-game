@@ -24,6 +24,7 @@ Log="*res://addons/tinylogger/Logger.gd"
 AppState="*res://globals/AppState.gd"
 GameSettings="*res://globals/GameSettings.gd"
 GameState="*res://globals/GameState.gd"
+AudioManager="*res://globals/AudioManager.tscn"
 
 [display]
 
@@ -85,6 +86,7 @@ common/physics_ticks_per_second=30
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1
 viewport/transparent_background=true

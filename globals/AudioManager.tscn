@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1k7gk6tua4hs"]
+
+[ext_resource type="Script" path="res://globals/AudioManager.gd" id="1_da006"]
+[ext_resource type="AudioStream" uid="uid://df5t5ltswnda2" path="res://music/music1.ogg" id="2_5etqu"]
+[ext_resource type="AudioStream" uid="uid://n155xhtv1lo5" path="res://sounds/ui_select.ogg" id="3_4rsy8"]
+[ext_resource type="AudioStream" uid="uid://nmg6curpwi8s" path="res://sounds/ui_click.ogg" id="4_fpmpo"]
+
+[node name="AudioManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_da006")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_5etqu")
+volume_db = -2.0
+autoplay = true
+
+[node name="Effects" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Damage" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="Win" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Select" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("3_4rsy8")
+
+[node name="Click" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("4_fpmpo")

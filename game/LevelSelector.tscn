@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfncvqolj50og"]
+[gd_scene load_steps=12 format=3 uid="uid://dfncvqolj50og"]
 
 [ext_resource type="Texture2D" uid="uid://bbjn4vt8bkcni" path="res://ui/assets/pattern_77.png" id="1_3v6ku"]
 [ext_resource type="PackedScene" uid="uid://dehmbmk4b3n6q" path="res://ui/components/ReleaseOverlay.tscn" id="2_3ulix"]
 [ext_resource type="Script" path="res://ui/scripts/ForwardPressed.gd" id="3_2wrmq"]
+[ext_resource type="PackedScene" uid="uid://1yot22cf6n8" path="res://ui/CreditsOverlay.tscn" id="3_eebx8"]
 [ext_resource type="Script" path="res://ui/scripts/LoadLevel.gd" id="4_v4wxb"]
 [ext_resource type="FontFile" uid="uid://bm3ffgysymkfv" path="res://ui/assets/Raleway-Bold.ttf" id="4_yu7vr"]
 [ext_resource type="Script" path="res://ui/scripts/SwitchToScene.gd" id="5_7guxu"]
@@ -54,33 +55,35 @@ stretch_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="CreditsOverlay" parent="UI" instance=ExtResource("3_eebx8")]
+
 [node name="GameReleaseOverlay" parent="UI" instance=ExtResource("2_3ulix")]
 
-[node name="MainMenu" type="MarginContainer" parent="UI"]
+[node name="LevelSelector" type="MarginContainer" parent="UI"]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_right = 128.0
+offset_left = -352.0
+offset_right = 352.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 64
+theme_override_constants/margin_bottom = 128
 
-[node name="Layout" type="VBoxContainer" parent="UI/MainMenu"]
+[node name="Layout" type="VBoxContainer" parent="UI/LevelSelector"]
 custom_minimum_size = Vector2(640, 2.08165e-12)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Header" type="MarginContainer" parent="UI/MainMenu/Layout"]
+[node name="Header" type="MarginContainer" parent="UI/LevelSelector/Layout"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
 
-[node name="Title" type="Label" parent="UI/MainMenu/Layout/Header"]
+[node name="Title" type="Label" parent="UI/LevelSelector/Layout/Header"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.317647, 0.317647, 0.317647, 1)
@@ -92,29 +95,28 @@ horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="(flex-grow)1" type="HSeparator" parent="UI/MainMenu/Layout"]
-custom_minimum_size = Vector2(0, 64)
+[node name="(flex-grow)1" type="HSeparator" parent="UI/LevelSelector/Layout"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_81f6t")
 
-[node name="Selector" type="HBoxContainer" parent="UI/MainMenu/Layout"]
+[node name="Selector" type="HBoxContainer" parent="UI/LevelSelector/Layout"]
 layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Level0" type="PanelContainer" parent="UI/MainMenu/Layout/Selector" node_paths=PackedStringArray("button")]
+[node name="Level0" type="PanelContainer" parent="UI/LevelSelector/Layout/Selector" node_paths=PackedStringArray("button")]
 custom_minimum_size = Vector2(2.08165e-12, 240)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("3_2wrmq")
 button = NodePath("Layout/Tutorial")
 
-[node name="Layout" type="VBoxContainer" parent="UI/MainMenu/Layout/Selector/Level0"]
+[node name="Layout" type="VBoxContainer" parent="UI/LevelSelector/Layout/Selector/Level0"]
 layout_mode = 2
 alignment = 2
 
-[node name="Tutorial" type="Button" parent="UI/MainMenu/Layout/Selector/Level0/Layout"]
+[node name="Tutorial" type="Button" parent="UI/LevelSelector/Layout/Selector/Level0/Layout"]
 custom_minimum_size = Vector2(180, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -122,18 +124,18 @@ text = "Tutorial"
 flat = true
 script = ExtResource("4_v4wxb")
 
-[node name="LevelINF" type="PanelContainer" parent="UI/MainMenu/Layout/Selector" node_paths=PackedStringArray("button")]
+[node name="LevelINF" type="PanelContainer" parent="UI/LevelSelector/Layout/Selector" node_paths=PackedStringArray("button")]
 custom_minimum_size = Vector2(2.08165e-12, 240)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("3_2wrmq")
 button = NodePath("Layout/Endless")
 
-[node name="Layout" type="VBoxContainer" parent="UI/MainMenu/Layout/Selector/LevelINF"]
+[node name="Layout" type="VBoxContainer" parent="UI/LevelSelector/Layout/Selector/LevelINF"]
 layout_mode = 2
 alignment = 2
 
-[node name="Endless" type="Button" parent="UI/MainMenu/Layout/Selector/LevelINF/Layout"]
+[node name="Endless" type="Button" parent="UI/LevelSelector/Layout/Selector/LevelINF/Layout"]
 custom_minimum_size = Vector2(180, 64)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -142,17 +144,16 @@ flat = true
 script = ExtResource("4_v4wxb")
 level = "endless"
 
-[node name="(flex-grow)2" type="HSeparator" parent="UI/MainMenu/Layout"]
-custom_minimum_size = Vector2(0, 64)
+[node name="(flex-grow)2" type="HSeparator" parent="UI/LevelSelector/Layout"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_81f6t")
 
-[node name="Actions" type="HBoxContainer" parent="UI/MainMenu/Layout"]
+[node name="Actions" type="HBoxContainer" parent="UI/LevelSelector/Layout"]
 layout_mode = 2
 alignment = 1
 
-[node name="Back" type="Button" parent="UI/MainMenu/Layout/Actions"]
+[node name="Back" type="Button" parent="UI/LevelSelector/Layout/Actions"]
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -161,7 +162,7 @@ text = "Back to Menu"
 expand_icon = true
 script = ExtResource("5_7guxu")
 
-[node name="Exit" type="Button" parent="UI/MainMenu/Layout/Actions"]
+[node name="Exit" type="Button" parent="UI/LevelSelector/Layout/Actions"]
 visible = false
 custom_minimum_size = Vector2(192, 64)
 layout_mode = 2

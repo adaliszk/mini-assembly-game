@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://1yot22cf6n8"]
+
+[ext_resource type="Script" path="res://ui/scripts/CreditsOverlay.gd" id="1_mbre5"]
+
+[node name="CreditsOverlay" type="MarginContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 32
+script = ExtResource("1_mbre5")
+
+[node name="Body" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(420, 64)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center]
+Music and Sound by [url=https://twitter.com/LoxoHighScore]@LoxoHighScore[/url]
+Code and Design by [url=https://adaliszk.itch.io]@AdaLiszk[/url]
+[/center]
+"
+fit_content = true
+scroll_active = false
