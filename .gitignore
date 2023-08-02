@@ -3,6 +3,8 @@
 .import
 .godot
 
+.DS_Store
+
 **/*.tmp
 
 addons/jamcountdown
